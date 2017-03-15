@@ -8,21 +8,20 @@ class WeightsController < ApplicationController
 
   def show
     weight = Weight.find(params[:id])
-    render json: pin
+    render json: weight
   end
 
 
   def create
-
     workout = Workout.find(params[:workout_id])
 
-    puts "**This is the workout info"
+    puts "**This is the workout info**"
     puts workout
 
     weight = workout.weights.create(weight_params)
 
-    if workout_id
-      render json: workout, status: :created
+    if weight
+      render json: weight, status: :created
     else
       render json: weight.errors, status: :unprocessable_entity
     end
