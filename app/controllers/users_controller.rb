@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by(email: params[:user][:email])
+
     if user && user.authenticate(params[:user][:password])
       token = token(user.id, user.email)
 
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.required(:user).permite(:email, :password)
+      params.required(:user).permite(:email, :password, :username, :name)
     end
-    
+
   end
