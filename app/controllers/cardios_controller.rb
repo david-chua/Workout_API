@@ -45,4 +45,6 @@ class CardiosController < ApplicationController
   private
 
     def cardio_params
-      params.require(:weight).permit(:cardio_name, :time, :intensity, :distance, :workout_id)
+      params.require(:cardio).permit(:cardio_name, :time, :intensity, :distance, :workout_id)
+    end
+  end

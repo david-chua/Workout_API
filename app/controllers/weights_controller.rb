@@ -46,6 +46,6 @@ class WeightsController < ApplicationController
 
     def weight_params
       params.require(:weight).permit(:exercise_name, :set, :rep, :weight, :workout_id)
-
+    end 
 
   end
