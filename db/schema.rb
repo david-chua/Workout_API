@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316174501) do
+ActiveRecord::Schema.define(version: 20170318031849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,8 +50,12 @@ ActiveRecord::Schema.define(version: 20170316174501) do
     t.string   "title"
     t.string   "date"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "editable",   default: true
+    t.boolean  "stick",      default: true
+    t.date     "start"
+    t.text     "notes"
     t.index ["user_id"], name: "index_workouts_on_user_id", using: :btree
   end
 

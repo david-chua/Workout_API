@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  
+
 def index
   workouts = current_user.workouts
 
@@ -32,6 +32,6 @@ end
 private
 
 def workout_params
-  params.required(:workout).permit(:title, :date, :user_id)
+  params.required(:workout).permit(:title, :user_id)
 end
 end
