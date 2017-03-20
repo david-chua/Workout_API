@@ -13,12 +13,12 @@ class WeightsController < ApplicationController
 
 
   def create
-    workout = Workout.find(params[:workout_id])
+    @workout = Workout.find(params[:workout_id])
 
     puts "**This is the workout info**"
     puts workout
 
-    weight = workout.weights.create(weight_params)
+    @weight = @workout.weights.create(weight_params)
 
     if weight
       render json: weight, status: :created
@@ -46,6 +46,6 @@ class WeightsController < ApplicationController
 
     def weight_params
       params.require(:weight).permit(:exercise_name, :set, :rep, :weight, :workout_id)
-    end 
+    end
 
   end

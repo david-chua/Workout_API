@@ -5,11 +5,16 @@ Rails.application.routes.draw do
       post '/login', to: 'users#login'
       end
     end
-    resources :workouts do
-          resources :weights
-          resources :cardios
-          end
-      end
+    resources :workouts
+    resources :weights, only: [:index, :show, :update, :destroy]
+    resources :cardios, only: [:index, :show, :update, :destroy]
+
+
+    get 'users/:id/workouts', to: 'workouts#workoutsByUser'
+    post 'workouts/:id/weights', to: 'weights#createWeight'
+    post 'workout/:id/cardios', to: 'cardios#createCardio'
+  end
+
 
 #
 # Prefix Verb   URI Pattern                                                Controller#Action
