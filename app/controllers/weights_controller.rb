@@ -16,14 +16,14 @@ class WeightsController < ApplicationController
     @workout = Workout.find(params[:workout_id])
 
     puts "**This is the workout info**"
-    puts workout
+    puts @workout
 
     @weight = @workout.weights.create(weight_params)
 
-    if weight
-      render json: weight, status: :created
+    if @weight
+      render json: @weight, status: :created
     else
-      render json: weight.errors, status: :unprocessable_entity
+      render json: @weight.errors, status: :unprocessable_entity
     end
   end
 
